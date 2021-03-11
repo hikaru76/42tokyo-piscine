@@ -1,0 +1,5 @@
+Credentials cache: API:53E22B05-11A9-44B7-B1DD-86727BB9161E
+        Principal: hsakamot@42TOKYO.JP
+
+  Issued                Expires               Principal
+Feb 15 23:39:22 2021  Feb 16 09:39:22 2021  krbtgt/42TOKYO.JP@42TOKYO.JP

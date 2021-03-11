@@ -1,0 +1,92 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils2.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hsakamot <hsakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/21 12:20:44 by hsakamot          #+#    #+#             */
+/*   Updated: 2021/03/09 13:34:29 by hsakamot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft.h"
+
+int		ft_atoi(char *str)
+{
+	int i[4];
+
+	i[0] = -1;
+	i[1] = 0;
+	i[3] = 0;
+	i[2] = 1;
+	while (str[++i[0]] == ' ' || str[i[0]] == '\n' || str[i[0]] == '\t' ||
+			str[i[0]] == '\v' || str[i[0]] == '\f' || str[i[0]] == '\r')
+	{
+	}
+	while (str[i[0]] == '-' || str[i[0]] == '+' || str[i[0]] == '0')
+	{
+		if (str[i[0]] == '-')
+			i[2] *= -1;
+		else if (str[i[0]] == '0')
+			i[3] = 1;
+		++i[0];
+	}
+	while (str[i[0]] != '\0' && str[i[0]] >= '0' && str[i[0]] <= '9')
+	{
+		i[1] = i[1] * 10;
+		i[1] += (int)str[i[0]++] - '0';
+	}
+	i[1] = (i[3] && !i[1] ? 0 : i[1]);
+	return (i[1] * i[2]);
+}
+
+char	*ft_strncpy(char *dest, char *src, int n)
+{
+	int i;
+
+	i = 0;
+	while (src[i] != '\0' && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
+}
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	int i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+char	*ft_strncat(char *dest, char *src, int nb)
+{
+	int a;
+	int b;
+	int i;
+
+	a = ft_strlen(dest);
+	b = ft_strlen(src);
+	i = 0;
+	while (i < b && i < nb)
+	{
+		dest[a + i] = src[i];
+		i++;
+	}
+	dest[a + i] = '\0';
+	return (dest);
+}
